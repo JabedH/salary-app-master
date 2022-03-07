@@ -41,28 +41,28 @@
     <div class="form-inline text-center">
     	<div class="form-group d-flex justify-content-center ">
 		    <div class="d-flex ">
-          <input class="form-control me-3" type='text' id='name' placeholder='Name'>
-		     <input class="form-control" type='text' id='salary' placeholder='Salary'>
+          <input class="form-control me-2" type='text' id='name' placeholder='Name'>
+		     <input class="form-control me-2" type='text' id='salary' placeholder='Salary'>
         </div>
-		    <button onclick="clearBtn()" class="btn btn-success " id="AddRecord">Add Record</button>
-		    <button class="btn btn-info" id="showLast">Show Last</button>
-		    <button class="btn btn-info" id="recordCount">Record Count</button>
+		    <button onclick="clearBtn()" class="btn btn-success me-2" id="AddRecord">Add Record</button>
+		    <button class="btn btn-info me-2" onclick="secondHandler()" type="button" data-bs-toggle="modal" data-bs-target="#staticBackdrop" id="showLast">Show Last</button>
+		    <button class="btn btn-success" id="recordCount">Record Count</button>
     	</div>
     </div>
 	
 	<div id="chart">
     	<svg></svg>
     </div>
-
+<!-- 
     <div id="dialog-last-item" class="hide dialog" title="Last Item in the Chart" >
       <p>Name: <span id="showName" class="text-success"></span></p>
       <p>Salary: <span id="showSalary" class="text-success"></span></p>
-    </div>
+    </div> -->
     
     <div id="dialog-error" class="hide dialog" title="Be careful Dude !" >
-      <p id="newNameLine">Name: <span id="newName" class="text-warning"></span></p>
-      <p id="newSalaryLine">Salary: <span id="newSalary" class="text-warning"></span></p>
-      <h2 class="text-danger">Your Boss is watching!</h2>
+      <!-- <p id="newNameLine">Name: <span id="newName" class="text-warning"></span></p>
+      <p id="newSalaryLine">Salary: <span id="newSalary" class="text-warning"></span></p> -->
+      <!-- <h2 class="text-danger">Your Boss is watching!</h2> -->
     </div>
 
 	<div id="dialog-record-count" class="hide dialog" title="Number of Records" >
@@ -72,28 +72,8 @@
 
   <!-- modal -->
   <!-- Button trigger modal -->
-<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
-  Launch static backdrop modal
-</button>
 
-<!-- Modal -->
-<div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="staticBackdropLabel">Modal title</h5>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-      </div>
-      <div class="modal-body">
-        ...
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary">Understood</button>
-      </div>
-    </div>
-  </div>
-</div>
+<div id="addLastOne"></div>
 <!-- end modal -->
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
 

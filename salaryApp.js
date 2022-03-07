@@ -93,14 +93,8 @@ function addRecordHandler() {
     return;
   }
   addRecord(name, salary);
+  secondHandler(name, salary);
 }
-//---------
-// const clearBtn = () => {
-//   const nam = document.getElementById("name");
-//   const name = nam.value;
-//   nam.value = "";
-// };
-//-------
 
 function addRecord(name, salary) {
   const newItem = getRecord(name, salary);
@@ -119,17 +113,13 @@ function getRecord(name, salary) {
   return newItem;
 }
 
-function secondHandler(e) {
-  console.log("why are you clicking around????");
-}
-
 const showLastItem = function () {
   const items = salary_data;
   let lastKey;
   for (const key in items) {
     lastKey = key;
   }
-  const lastItem = items[lastKey];
+  const lastItem = items[lastKey]; // i have to change this area
   const lastRecord = getRecord(lastItem.name, lastItem.salary);
   displayLastItemDialog(lastRecord);
 };
@@ -144,9 +134,10 @@ const displayLastItemDialog = function (lastItem) {
   const dlg = document.getElementById("dialog-last-item");
   dlg.classList.remove("hide");
   document.getElementById("showName").innerText = lastItem.name;
-  document.getElementById("showSalary").innerText = d3.format(",.0f")(
-    lastItem.salary
-  );
+  document.getElementById("showSalary").innerText = lastItem.salary;
+  // document.getElementById("showSalary").innerText = d3.format(",.0f")(
+  //   lastItem.salary
+  // );
   dlg.dialog({
     buttons: {
       Ok: function () {
@@ -155,7 +146,34 @@ const displayLastItemDialog = function (lastItem) {
     },
   });
 };
-
+// -----
+const secondHandler = (name, salary) => {
+  const newName = name;
+  const newSalary = salary;
+  console.log(newName, newSalary);
+  const addLastOne = document.getElementById("addLastOne");
+  const div = document.createElement("div");
+  div.innerHTML = `
+  <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content" >
+      <div class="modal-header">
+        <h5 class="modal-title" id="staticBackdropLabel">Last Person Details</h5>
+      </div>
+      <div class="modal-body">
+       <h3>${name ? name : "Jhankar Mahbub"}</h3>
+       <h3>${newSalary ? newSalary : "53655"}</h3>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+  `;
+  addLastOne.appendChild(div);
+};
+// ----
 var showDataError = function (name, salary) {
   const dlg = document.getElementById("#dialog-error");
   dlg.classList.remove("hide");
@@ -186,7 +204,7 @@ const showRecordCount = function (data) {
   const dlg = document.getElementById("dialog-record-count");
 
   dlg.classList.remove("hide");
-
+  console.log(dlg);
   document.getElementById("numberOfRecords").innerText = data.length;
 
   dlg.dialog({
